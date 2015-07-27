@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RecyclerTabLayout</string>
+
+    <string name="title_basic">Basic</string>
+    <string name="title_custom_view01">Custom View - sample</string>
+    <string name="title_custom_view02">Custom View - icon</string>
+    <string name="title_imitation_loop">UseCase - Imitation of Loop</string>
+    <string name="title_years">UseCase - Years</string>
+    <string name="title_auto_select">Other - Auto Tab Selection</string>
+
+    <string name="app_github_url">https://github.com/nshmura/RecyclerTabLayout</string>
+    <string name="app_github">GITHUB</string>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.nshmura.recyclertablayout.demo">
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+
+        <activity
+                android:name=".MainActivity"
+                android:theme="@style/AppTheme.Main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+                android:name=".basic.DemoBasicActivity"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".autoselect.DemoAutoSelectActivity"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".customview01.DemoCustomView01Activity"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".customview02.DemoCustomView02Activity"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".years.DemoYearsActivity"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".imitationloop.DemoImitationLoopActivity"
+                android:theme="@style/AppTheme.NoActionBar"/>
+    </application>
+
+</manifest>
