@@ -1,0 +1,102 @@
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar, javadocJar
+}
+
+def getBintrayUser() {
+    return hasProperty('BINTRAY_USER') ? BINTRAY_USER : ""
+}
+
+def getBintrayApiKey() {
+    return hasProperty('BINTRAY_APIKEY') ? BINTRAY_APIKEY : ""
+}
+
+def getGpgPassphrase() {
+    return hasProperty('BINTRAY_GPG_PASSPHRASE') ? BINTRAY_GPG_PASSPHRASE : ""
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId GROUP
+            version VERSION_NAME
+            artifactId ARTIFACT_ID
+            artifact "build/outputs/aar/library-release.aar"
+            artifact javadocJar
+            artifact sourcesJar
+            pom.withXml {
+                Node root = asNode()
+                root.appendNode('name', ARTIFACT_ID)
+                root.appendNode('description', POM_DESCRIPTION)
+                root.appendNode('url', POM_URL)
+
+                def issues = root.appendNode('issueManagement')
+                issues.appendNode('system', 'github')
+                issues.appendNode('url', ISSUE_URL)
+
+                def scm = root.appendNode('scm')
+                scm.appendNode('url', POM_SCM_URL)
+                scm.appendNode('connection', POM_SCM_CONNECTION)
+                scm.appendNode('developerConnection', POM_SCM_DEV_CONNECTION)
+
+                def license = root.appendNode('licenses').appendNode('license')
+                license.appendNode('name', POM_LICENCE_NAME)
+                license.appendNode('url', POM_LICENCE_URL)
+                license.appendNode('distribution', POM_LICENCE_DIST)
+
+                def dependenciesNode = asNode().appendNode('dependencies')
+                configurations.compile.allDependencies.each {
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', it.group)
+                    dependencyNode.appendNode('artifactId', it.name)
+                    dependencyNode.appendNode('version', it.version)
+                    dependencyNode.appendNode('scope', 'compile')
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = bintrayUser
+    key = bintrayApiKey
+
+    publications = ['mavenJava']
+
+    dryRun = false
+    publish = true
+
+    pkg {
+        repo = "maven"
+        name = ARTIFACT_NAME
+        desc = POM_DESCRIPTION
+        websiteUrl = POM_URL
+        issueTrackerUrl = ISSUE_URL
+        vcsUrl = POM_SCM_URL
+        licenses = ["Apache-2.0"]
+        labels = ['android']
+        publicDownloadNumbers = true
+
+        version {
+            name = VERSION_NAME
+            vcsTag = VERSION_NAME
+        }
+    }
+}

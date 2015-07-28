@@ -91,8 +91,8 @@ public class RecyclerTabLayout extends RecyclerView {
         setIndicatorHeight(a.getDimensionPixelSize(R.styleable
                 .rtl_RecyclerTabLayout_rtl_tabIndicatorHeight, 0));
 
-        mTabTextAppearance = a.getResourceId(R.styleable.TabLayout_tabTextAppearance,
-                R.style.TextAppearance_Design_Tab);
+        mTabTextAppearance = a.getResourceId(R.styleable.rtl_RecyclerTabLayout_rtl_tabTextAppearance,
+                R.style.rtl_RecyclerTabLayout_Tab);
 
         mTabPaddingStart = mTabPaddingTop = mTabPaddingEnd = mTabPaddingBottom = a
                 .getDimensionPixelSize(R.styleable.rtl_RecyclerTabLayout_rtl_tabPadding, 0);
