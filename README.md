@@ -1,15 +1,13 @@
 # RecyclerTabLayout
-Sliding tabs layout implemented using RecyclerView.
-It's possible to add many items to tabs.
-
-![Basic](art/basic.gif)
-
-![Icon](art/icon.gif)
+Sliding tabs layout implemented with RecyclerView for many tabs.
 
 ![Years](art/years.gif)
 
 ![Loop](art/loop.gif)
 
+![Basic](art/basic.gif)
+
+![Icon](art/icon.gif)
 # Usage
 
 define `RecyclerTabLayout` in xml layout with custom attributes.
@@ -97,6 +95,10 @@ public class CustomRecyclerViewAdapter extends RecyclerTabLayout.Adapter<CustomR
 Download [the latest JAR] or grab via Gradle:
 
 ```
+repositories {
+    jcenter()
+}
+
 dependencies {
     compile 'com.nshmura.recyclertablayout:library:1.0.0@aar'
 }
