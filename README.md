@@ -92,7 +92,7 @@ public class CustomRecyclerViewAdapter extends RecyclerTabLayout.Adapter<CustomR
 [default attribute](RecyclerTabLayout/blob/develop/library/src/main/res/values/styles.xml)
 
 # Download
-Download [the latest JAR] or grab via Gradle:
+Download via Gradle:
 
 ```
 repositories {
