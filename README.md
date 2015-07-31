@@ -119,7 +119,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.nshmura.recyclertablayout:library:1.0.0@aar'
+    compile 'com.nshmura.recyclertablayout:library:0.1.0'
 }
 ```
 
