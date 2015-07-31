@@ -14,6 +14,10 @@ A sliding tabs layout implemented with the RecyclerView.
 
 ![Icon](art/icon.gif)
 
+
+## Samples
+<a href="https://play.google.com/store/apps/details?id=com.nshmura.recyclertablayout.demo"><img src="(art/googleplay.png"/></a>
+
 # Usage
 
 Define `RecyclerTabLayout` in xml layout with custom attributes.
@@ -119,7 +123,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.nshmura.recyclertablayout:library:0.1.0'
+   compile 'com.nshmura:recyclertablayout:0.1.0'
 }
 ```
 

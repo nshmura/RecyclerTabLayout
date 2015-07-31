@@ -11,15 +11,24 @@ android {
         versionCode VERSION_CODE as int
         versionName VERSION_NAME
     }
+
+    apply from: 'signingConfigs.release.gradle', to: android
+
     buildTypes {
+        debug {
+            debuggable true
+            zipAlignEnabled true
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
         }
     }
 }
 
 dependencies {
     compile project(':library')
+    //compile 'com.nshmura:recyclertablayout:0.1.0'
     compile 'com.android.support:appcompat-v7:22.2.0'
 }
