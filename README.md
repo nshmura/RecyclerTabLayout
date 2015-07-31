@@ -16,7 +16,7 @@ A sliding tabs layout implemented with the RecyclerView.
 
 
 ## Samples
-<a href="https://play.google.com/store/apps/details?id=com.nshmura.recyclertablayout.demo"><img src="(art/googleplay.png"/></a>
+<a href="https://play.google.com/store/apps/details?id=com.nshmura.recyclertablayout.demo"><img src="art/googleplay.png"/></a>
 
 # Usage
 
