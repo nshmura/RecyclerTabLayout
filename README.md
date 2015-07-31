@@ -1,6 +1,11 @@
 # RecyclerTabLayout
-Sliding tabs layout implemented with RecyclerView for many tabs.
+A sliding tabs layout implemented with the RecyclerView.
 
+## Features
+- Efficient when having many tabs.
+- Easy setup with ViewPager.
+
+## Demos
 ![Years](art/years.gif)
 
 ![Loop](art/loop.gif)
@@ -8,9 +13,10 @@ Sliding tabs layout implemented with RecyclerView for many tabs.
 ![Basic](art/basic.gif)
 
 ![Icon](art/icon.gif)
+
 # Usage
 
-define `RecyclerTabLayout` in xml layout with custom attributes.
+Define `RecyclerTabLayout` in xml layout with custom attributes.
 ```xml
 <com.nshmura.recyclertablayout.RecyclerTabLayout
         android:id="@+id/recycler_tab_layout"
@@ -30,7 +36,7 @@ define `RecyclerTabLayout` in xml layout with custom attributes.
         rtl_tabPadding="0dp"/>
 ```
 
-Set up with Viewpager.
+Set up with the ViewPager.
 ```java
 ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
 viewPager.setAdapter(adapter);
@@ -39,7 +45,7 @@ RecyclerTabLayout recyclerTabLayout = (RecyclerTabLayout) findViewById(R.id.recy
 recyclerTabLayout.setUpWithViewPager(viewPager);
 ```
 
-Or set up with Custom RecyclerView.Adapter that's extends `RecyclerTabLayout.Adapter`.
+Or set up with ViewPager and Custom RecyclerView.Adapter that's extends `RecyclerTabLayout.Adapter`.
 ```java
 ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
 viewPager.setAdapter(adapter);
@@ -48,7 +54,7 @@ RecyclerTabLayout recyclerTabLayout = (RecyclerTabLayout) findViewById(R.id.recy
 recyclerTabLayout.setUpWithAdapter(new CustomRecyclerViewAdapter(viewPager));
 ```
 
-Here's custom adapter sample.
+Here's sample of custom RecyclerView adapter.
 ```java
 public class CustomRecyclerViewAdapter extends RecyclerTabLayout.Adapter<CustomRecyclerViewAdapter.ViewHolder> {
 
@@ -59,19 +65,32 @@ public class CustomRecyclerViewAdapter extends RecyclerTabLayout.Adapter<CustomR
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ...
+        // Inflate your view.
+        View view = ...;
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        // Bind data
         ...
+        
+        if (position == getCurrentIndicatorPosition()) {
+            //Highlight view
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ...
+        
+        public ViewHolder(View itemView) {
+            super(itemView);
+        ...
+        }
     }
 }
 ```
+
 
 # Attributes
 | attr  | description |
@@ -89,7 +108,7 @@ public class CustomRecyclerViewAdapter extends RecyclerTabLayout.Adapter<CustomR
 | rtl_tabPaddingBottom     | The padding of the bottom edge of each tab |
 | rtl_tabPadding           | The padding of all four edges of each tab |
 
-[default attribute](RecyclerTabLayout/blob/develop/library/src/main/res/values/styles.xml)
+[default attribute](library/src/main/res/values/styles.xml)
 
 # Download
 Download via Gradle:
@@ -103,6 +122,15 @@ dependencies {
     compile 'com.nshmura.recyclertablayout:library:1.0.0@aar'
 }
 ```
+
+# Resources
+Demo app uses the following resources.
+
+color-names by codebrainz<br/>
+https://github.com/codebrainz/color-names
+
+Material Design icons by Google<br/>
+https://github.com/google/material-design-icons
 
 # License
 ```
