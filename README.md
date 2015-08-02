@@ -4,8 +4,8 @@
 A sliding tabs layout implemented with the RecyclerView.
 
 ## Features
-- Efficient when having many tabs.
-- Easy setup with ViewPager.
+- Efficient when having many tabs
+- Easy setup with ViewPager (same as TabLayout of Android Design Support Library)
 
 ## Demos
 ![Years](art/years.gif)
