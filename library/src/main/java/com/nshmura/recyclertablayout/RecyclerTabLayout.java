@@ -39,8 +39,8 @@ import android.widget.TextView;
 public class RecyclerTabLayout extends RecyclerView {
 
     protected static final long DEFAULT_SCROLL_DURATION = 200;
-    private static final float DEFAULT_POSITION_THRESHOLD = 0.6f;
-    private static final float POSITION_THRESHOLD_ALLOWABL = 0.001f;
+    protected static final float DEFAULT_POSITION_THRESHOLD = 0.6f;
+    protected static final float POSITION_THRESHOLD_ALLOWABL = 0.001f;
 
     protected Paint mIndicatorPaint;
     protected int mTabBackgroundResId;
@@ -57,15 +57,15 @@ public class RecyclerTabLayout extends RecyclerView {
 
     protected LinearLayoutManager mLinearLayoutManager;
     protected RecyclerOnScrollListener mRecyclerOnScrollListener;
-    private ViewPager mViewPager;
+    protected ViewPager mViewPager;
     protected Adapter<?> mAdapter;
 
     protected int mIndicatorPositoin;
     protected int mIndicatorOffset;
     protected int mScrollOffset;
     protected float mOldPositionOffset;
-    private float mPositionThreshold;
-    private boolean mRequestScrollToTab;
+    protected float mPositionThreshold;
+    protected boolean mRequestScrollToTab;
 
     public RecyclerTabLayout(Context context) {
         this(context, null);
@@ -268,11 +268,20 @@ public class RecyclerTabLayout extends RecyclerView {
             mIndicatorPositoin = position;
 
         } else {
+            if (getMeasuredWidth() > 0 && mTabMinWidth == mTabMaxWidth) { //fixed size
+                int width = mTabMinWidth;
+                int offset = (int) (positionOffset * -width);
+                int leftOffset = (int) ((getMeasuredWidth() - width) / 2.f);
+                scrollOffset = offset + leftOffset;
+            }
             mRequestScrollToTab = true;
         }
 
         mLinearLayoutManager.scrollToPositionWithOffset(position, scrollOffset);
-        invalidate();
+
+        if (mIndicatorHeight > 0) {
+            invalidate();
+        }
 
         mOldPositionOffset = positionOffset;
     }

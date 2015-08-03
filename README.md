@@ -1,7 +1,7 @@
 # RecyclerTabLayout
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RecyclerTabLayout-green.svg?style=flat)](https://android-arsenal.com/details/1/2220)
 
-A sliding tabs layout implemented with the RecyclerView.
+An efficient TabLayout library implemented with RecyclerView.
 
 ## Features
 - Efficient when having many tabs
@@ -125,7 +125,7 @@ repositories {
 }
 
 dependencies {
-   compile 'com.nshmura:recyclertablayout:0.1.0'
+   compile 'com.nshmura:recyclertablayout:0.1.1'
 }
 ```
 
