@@ -12,7 +12,10 @@ android {
         versionName VERSION_NAME
     }
 
-    apply from: 'signingConfigs.release.gradle', to: android
+    def signingConfigsFile = file("signingConfigs.release.gradle")
+    if (signingConfigsFile.exists()) {
+        apply from: signingConfigsFile.absolutePath, to: android
+    }
 
     buildTypes {
         debug {
@@ -22,7 +25,9 @@ android {
         release {
             debuggable false
             zipAlignEnabled true
-            signingConfig signingConfigs.release
+            if (signingConfigsFile.exists()) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 }
