@@ -9,11 +9,15 @@ import com.nshmura.recyclertablayout.demo.utils.DemoData;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -50,6 +54,9 @@ public class DemoBasicActivity extends AppCompatActivity {
                 return lhs.name.compareTo(rhs.name);
             }
         });
+        if (isRtl()) {
+            Collections.reverse(items);
+        }
 
         DemoColorPagerAdapter adapter = new DemoColorPagerAdapter();
         adapter.addAll(items);
@@ -60,6 +67,22 @@ public class DemoBasicActivity extends AppCompatActivity {
         mRecyclerTabLayout = (RecyclerTabLayout)
                 findViewById(R.id.recycler_tab_layout);
         mRecyclerTabLayout.setUpWithViewPager(viewPager);
+
+        if (isRtl()) {
+            LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerTabLayout
+                    .getLayoutManager();
+            layoutManager.setReverseLayout(true);
+            viewPager.setCurrentItem(items.size() - 1);
+        }
+    }
+
+    private boolean isRtl() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            Configuration config = getResources().getConfiguration();
+            return config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+        } else {
+            return false;
+        }
     }
 
     @Override
