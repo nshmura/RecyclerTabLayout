@@ -40,7 +40,7 @@ public class RecyclerTabLayout extends RecyclerView {
 
     protected static final long DEFAULT_SCROLL_DURATION = 200;
     protected static final float DEFAULT_POSITION_THRESHOLD = 0.6f;
-    protected static final float POSITION_THRESHOLD_ALLOWABL = 0.001f;
+    protected static final float POSITION_THRESHOLD_ALLOWABLE = 0.001f;
 
     protected Paint mIndicatorPaint;
     protected int mTabBackgroundResId;
@@ -60,7 +60,7 @@ public class RecyclerTabLayout extends RecyclerView {
     protected ViewPager mViewPager;
     protected Adapter<?> mAdapter;
 
-    protected int mIndicatorPositoin;
+    protected int mIndicatorPosition;
     protected int mIndicatorOffset;
     protected int mScrollOffset;
     protected float mOldPositionOffset;
@@ -184,7 +184,7 @@ public class RecyclerTabLayout extends RecyclerView {
             return;
         }
 
-        if (smoothScroll && position != mIndicatorPositoin) {
+        if (smoothScroll && position != mIndicatorPosition) {
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
                 startAnimation(position);
             } else {
@@ -209,7 +209,7 @@ public class RecyclerTabLayout extends RecyclerView {
         }
 
         ValueAnimator animator;
-        if (position < mIndicatorPositoin) {
+        if (position < mIndicatorPosition) {
             animator = ValueAnimator.ofFloat(distance, 0);
         } else {
             animator = ValueAnimator.ofFloat(-distance, 0);
@@ -260,12 +260,12 @@ public class RecyclerTabLayout extends RecyclerView {
                 mIndicatorOffset = 0;
             }
 
-            if (mAdapter != null && mIndicatorPositoin == position) {
+            if (mAdapter != null && mIndicatorPosition == position) {
                 updateCurrentIndicatorPosition(position, positionOffset - mOldPositionOffset,
                         positionOffset);
             }
 
-            mIndicatorPositoin = position;
+            mIndicatorPosition = position;
 
         } else {
             if (getMeasuredWidth() > 0 && mTabMinWidth == mTabMaxWidth) { //fixed size
@@ -288,10 +288,10 @@ public class RecyclerTabLayout extends RecyclerView {
 
     protected void updateCurrentIndicatorPosition(int position, float dx, float positionOffset) {
         int indicatorPosition = -1;
-        if (dx > 0 && positionOffset >= mPositionThreshold - POSITION_THRESHOLD_ALLOWABL) {
+        if (dx > 0 && positionOffset >= mPositionThreshold - POSITION_THRESHOLD_ALLOWABLE) {
             indicatorPosition = position + 1;
 
-        } else if (dx < 0 && positionOffset <= 1 - mPositionThreshold + POSITION_THRESHOLD_ALLOWABL) {
+        } else if (dx < 0 && positionOffset <= 1 - mPositionThreshold + POSITION_THRESHOLD_ALLOWABLE) {
             indicatorPosition = position;
         }
         if (indicatorPosition >= 0 && indicatorPosition != mAdapter.getCurrentIndicatorPosition()) {
@@ -302,7 +302,7 @@ public class RecyclerTabLayout extends RecyclerView {
 
     @Override
     public void onDraw(Canvas canvas) {
-        View view = mLinearLayoutManager.findViewByPosition(mIndicatorPositoin);
+        View view = mLinearLayoutManager.findViewByPosition(mIndicatorPosition);
         if (view == null) {
             if (mRequestScrollToTab) {
                 mRequestScrollToTab = false;
@@ -402,7 +402,7 @@ public class RecyclerTabLayout extends RecyclerView {
         @Override
         public void onPageSelected(int position) {
             if (mScrollState == ViewPager.SCROLL_STATE_IDLE) {
-                if (mRecyclerTabLayout.mIndicatorPositoin != position) {
+                if (mRecyclerTabLayout.mIndicatorPosition != position) {
                     mRecyclerTabLayout.scrollToTab(position);
                 }
             }
@@ -452,6 +452,7 @@ public class RecyclerTabLayout extends RecyclerView {
             super(viewPager);
         }
 
+        @SuppressWarnings("deprecation")
         @Override
         public DefaultAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             TabTextView tabTextView = new TabTextView(parent.getContext());
@@ -556,14 +557,11 @@ public class RecyclerTabLayout extends RecyclerView {
         public ColorStateList createColorStateList(int defaultColor, int selectedColor) {
             final int[][] states = new int[2][];
             final int[] colors = new int[2];
-            int i = 0;
-            states[i] = SELECTED_STATE_SET;
-            colors[i] = selectedColor;
-            i++;
+            states[0] = SELECTED_STATE_SET;
+            colors[0] = selectedColor;
             // Default enabled state
-            states[i] = EMPTY_STATE_SET;
-            colors[i] = defaultColor;
-            i++;
+            states[1] = EMPTY_STATE_SET;
+            colors[1] = defaultColor;
             return new ColorStateList(states, colors);
         }
     }
