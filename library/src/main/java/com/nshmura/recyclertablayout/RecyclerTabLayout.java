@@ -60,7 +60,7 @@ public class RecyclerTabLayout extends RecyclerView {
     protected ViewPager mViewPager;
     protected Adapter<?> mAdapter;
 
-    protected int mIndicatorPositoin;
+    protected int mIndicatorPosition;
     protected int mIndicatorOffset;
     protected int mScrollOffset;
     protected float mOldPositionOffset;
@@ -184,7 +184,7 @@ public class RecyclerTabLayout extends RecyclerView {
             return;
         }
 
-        if (smoothScroll && position != mIndicatorPositoin) {
+        if (smoothScroll && position != mIndicatorPosition) {
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
                 startAnimation(position);
             } else {
@@ -209,7 +209,7 @@ public class RecyclerTabLayout extends RecyclerView {
         }
 
         ValueAnimator animator;
-        if (position < mIndicatorPositoin) {
+        if (position < mIndicatorPosition) {
             animator = ValueAnimator.ofFloat(distance, 0);
         } else {
             animator = ValueAnimator.ofFloat(-distance, 0);
@@ -260,12 +260,12 @@ public class RecyclerTabLayout extends RecyclerView {
                 mIndicatorOffset = 0;
             }
 
-            if (mAdapter != null && mIndicatorPositoin == position) {
+            if (mAdapter != null && mIndicatorPosition == position) {
                 updateCurrentIndicatorPosition(position, positionOffset - mOldPositionOffset,
                         positionOffset);
             }
 
-            mIndicatorPositoin = position;
+            mIndicatorPosition = position;
 
         } else {
             if (getMeasuredWidth() > 0 && mTabMinWidth == mTabMaxWidth) { //fixed size
@@ -302,7 +302,7 @@ public class RecyclerTabLayout extends RecyclerView {
 
     @Override
     public void onDraw(Canvas canvas) {
-        View view = mLinearLayoutManager.findViewByPosition(mIndicatorPositoin);
+        View view = mLinearLayoutManager.findViewByPosition(mIndicatorPosition);
         if (view == null) {
             if (mRequestScrollToTab) {
                 mRequestScrollToTab = false;
@@ -402,7 +402,7 @@ public class RecyclerTabLayout extends RecyclerView {
         @Override
         public void onPageSelected(int position) {
             if (mScrollState == ViewPager.SCROLL_STATE_IDLE) {
-                if (mRecyclerTabLayout.mIndicatorPositoin != position) {
+                if (mRecyclerTabLayout.mIndicatorPosition != position) {
                     mRecyclerTabLayout.scrollToTab(position);
                 }
             }
