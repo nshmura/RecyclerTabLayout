@@ -452,6 +452,7 @@ public class RecyclerTabLayout extends RecyclerView {
             super(viewPager);
         }
 
+        @SuppressWarnings("deprecation")
         @Override
         public DefaultAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             TabTextView tabTextView = new TabTextView(parent.getContext());
