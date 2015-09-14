@@ -40,7 +40,7 @@ public class RecyclerTabLayout extends RecyclerView {
 
     protected static final long DEFAULT_SCROLL_DURATION = 200;
     protected static final float DEFAULT_POSITION_THRESHOLD = 0.6f;
-    protected static final float POSITION_THRESHOLD_ALLOWABL = 0.001f;
+    protected static final float POSITION_THRESHOLD_ALLOWABLE = 0.001f;
 
     protected Paint mIndicatorPaint;
     protected int mTabBackgroundResId;
@@ -288,10 +288,10 @@ public class RecyclerTabLayout extends RecyclerView {
 
     protected void updateCurrentIndicatorPosition(int position, float dx, float positionOffset) {
         int indicatorPosition = -1;
-        if (dx > 0 && positionOffset >= mPositionThreshold - POSITION_THRESHOLD_ALLOWABL) {
+        if (dx > 0 && positionOffset >= mPositionThreshold - POSITION_THRESHOLD_ALLOWABLE) {
             indicatorPosition = position + 1;
 
-        } else if (dx < 0 && positionOffset <= 1 - mPositionThreshold + POSITION_THRESHOLD_ALLOWABL) {
+        } else if (dx < 0 && positionOffset <= 1 - mPositionThreshold + POSITION_THRESHOLD_ALLOWABLE) {
             indicatorPosition = position;
         }
         if (indicatorPosition >= 0 && indicatorPosition != mAdapter.getCurrentIndicatorPosition()) {
