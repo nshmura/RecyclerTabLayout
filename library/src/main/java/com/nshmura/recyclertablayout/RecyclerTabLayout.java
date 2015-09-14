@@ -557,14 +557,11 @@ public class RecyclerTabLayout extends RecyclerView {
         public ColorStateList createColorStateList(int defaultColor, int selectedColor) {
             final int[][] states = new int[2][];
             final int[] colors = new int[2];
-            int i = 0;
-            states[i] = SELECTED_STATE_SET;
-            colors[i] = selectedColor;
-            i++;
+            states[0] = SELECTED_STATE_SET;
+            colors[0] = selectedColor;
             // Default enabled state
-            states[i] = EMPTY_STATE_SET;
-            colors[i] = defaultColor;
-            i++;
+            states[1] = EMPTY_STATE_SET;
+            colors[1] = defaultColor;
             return new ColorStateList(states, colors);
         }
     }
