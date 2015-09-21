@@ -77,6 +77,7 @@ public class RecyclerTabLayout extends RecyclerView {
 
     public RecyclerTabLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        setWillNotDraw(false);
 
         mIndicatorPaint = new Paint();
         mLinearLayoutManager = new LinearLayoutManager(getContext());
