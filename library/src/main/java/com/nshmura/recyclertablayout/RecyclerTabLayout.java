@@ -26,7 +26,7 @@ import android.graphics.Paint;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.internal.widget.TintManager;
+import android.support.v7.widget.TintManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
