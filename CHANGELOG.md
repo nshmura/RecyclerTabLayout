@@ -1,6 +1,9 @@
 Change Log
 ==========
 
+# Version 0.1.3
+* Fix compatibility with AppCompat 23.1.1 #11
+
 # Version 0.1.2
 * Bug fixes #9
 * Code Cleanup #8
