@@ -26,7 +26,7 @@ import android.graphics.Paint;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.TintManager;
+import android.support.v7.widget.AppCompatDrawableManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -478,7 +478,7 @@ public class RecyclerTabLayout extends RecyclerView {
             }
             if (mTabBackgroundResId != 0) {
                 tabTextView.setBackgroundDrawable(
-                        TintManager.getDrawable(tabTextView.getContext(), mTabBackgroundResId));
+                        AppCompatDrawableManager.get().getDrawable(tabTextView.getContext(), mTabBackgroundResId));
             }
             tabTextView.setLayoutParams(createLayoutParamsForTabs());
             return new ViewHolder(tabTextView);
@@ -528,7 +528,7 @@ public class RecyclerTabLayout extends RecyclerView {
 
         protected RecyclerView.LayoutParams createLayoutParamsForTabs() {
             return new RecyclerView.LayoutParams(
-                    LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                    LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
