@@ -1,9 +1,5 @@
 package com.nshmura.recyclertablayout.demo.customview02;
 
-import com.nshmura.recyclertablayout.RecyclerTabLayout;
-import com.nshmura.recyclertablayout.demo.DemoImagePagerAdapter;
-import com.nshmura.recyclertablayout.demo.R;
-
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
@@ -16,6 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.nshmura.recyclertablayout.RecyclerTabLayout;
+import com.nshmura.recyclertablayout.demo.DemoImagePagerAdapter;
+import com.nshmura.recyclertablayout.demo.R;
 
 /**
  * Created by Shinichi Nishimura on 2015/07/22.
@@ -48,8 +48,8 @@ public class DemoCustomView02Adapter
 
     private Drawable loadIconWithTint(Context context, @IdRes int resourceId) {
         Drawable icon = ContextCompat.getDrawable(context, resourceId);
-        ColorStateList colorStateList = context.getResources()
-                .getColorStateList(R.color.custom_view02_tint);
+        ColorStateList colorStateList = ContextCompat
+                .getColorStateList(context,R.color.custom_view02_tint);
         icon = DrawableCompat.wrap(icon);
         DrawableCompat.setTintList(icon, colorStateList);
         return icon;
