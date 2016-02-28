@@ -126,7 +126,7 @@ repositories {
 }
 
 dependencies {
-   compile 'com.nshmura:recyclertablayout:0.1.5'
+   compile 'com.nshmura:recyclertablayout:0.1.7'
 }
 ```
 

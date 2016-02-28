@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+# Version 0.1.7
+* Add bintray-release plugin (https://github.com/novoda/bintray-release)
+
+# Version 0.1.6
+* Skipped
+
 # Version 0.1.5
 * RTL layout support
 
