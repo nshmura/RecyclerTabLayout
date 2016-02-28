@@ -1,6 +1,9 @@
 Change Log
 ==========
 
+# Version 0.1.5
+* RTL layout support
+
 # Version 0.1.4
 * Update to support v23.2.0 #13
 

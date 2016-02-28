@@ -313,11 +313,24 @@ public class RecyclerTabLayout extends RecyclerView {
         }
         mRequestScrollToTab = false;
 
-        int left = view.getLeft() + mScrollOffset - mIndicatorOffset;
-        int right = view.getRight() + mScrollOffset + mIndicatorOffset;
+        int left;
+        int right;
+        if (isLayoutRtl()) {
+            left = view.getLeft() - mScrollOffset - mIndicatorOffset;
+            right = view.getRight() - mScrollOffset + mIndicatorOffset;
+        } else {
+            left = view.getLeft() + mScrollOffset - mIndicatorOffset;
+            right = view.getRight() + mScrollOffset + mIndicatorOffset;
+        }
+
         int top = getHeight() - mIndicatorHeight;
         int bottom = getHeight();
+
         canvas.drawRect(left, top, right, bottom, mIndicatorPaint);
+    }
+
+    protected boolean isLayoutRtl() {
+        return ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL;
     }
 
     protected static class RecyclerOnScrollListener extends OnScrollListener {

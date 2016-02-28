@@ -10,7 +10,8 @@ public enum Demo {
     CUSTOM_VIEW02(R.string.title_custom_view02),
     IMITATION_LOOP(R.string.title_imitation_loop),
     YEARS(R.string.title_years),
-    AUTO_SELECT(R.string.title_auto_select);
+    AUTO_SELECT(R.string.title_auto_select),
+    RTL(R.string.title_auto_rtl);
 
     public int titleResId;
 

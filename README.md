@@ -6,6 +6,7 @@ An efficient TabLayout library implemented with RecyclerView.
 ## Features
 - Efficient when having many tabs
 - Easy setup with ViewPager (same as TabLayout of Android Design Support Library)
+- RTL layout support
 
 ## Demos
 ![Years](art/years.gif)
@@ -125,7 +126,7 @@ repositories {
 }
 
 dependencies {
-   compile 'com.nshmura:recyclertablayout:0.1.4'
+   compile 'com.nshmura:recyclertablayout:0.1.5'
 }
 ```
 
