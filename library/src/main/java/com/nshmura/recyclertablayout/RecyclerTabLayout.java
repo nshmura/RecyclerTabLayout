@@ -554,7 +554,10 @@ public class RecyclerTabLayout extends RecyclerView {
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        getViewPager().setCurrentItem(getAdapterPosition(), true);
+                        int pos = getAdapterPosition();
+                        if (pos != NO_POSITION) {
+                            getViewPager().setCurrentItem(pos, true);
+                        }
                     }
                 });
             }
