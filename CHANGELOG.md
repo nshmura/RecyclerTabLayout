@@ -2,6 +2,11 @@ Change Log
 ==========
 
 # Version 0.1.7
+* handle NO_POSITION when clicked #15
+* Update support library version to 23.3.0
+* Update gradle plugin version to 2.1.0
+
+# Version 0.1.7
 * Add bintray-release plugin (https://github.com/novoda/bintray-release)
 
 # Version 0.1.6
