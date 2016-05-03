@@ -1,13 +1,13 @@
 /**
  * Copyright (C) 2015 nshmura
  * Copyright (C) 2015 The Android Open Source Project
- *
+ * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p/>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p/>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -66,6 +66,7 @@ public class RecyclerTabLayout extends RecyclerView {
     protected float mOldPositionOffset;
     protected float mPositionThreshold;
     protected boolean mRequestScrollToTab;
+    protected boolean canScroll;
 
     public RecyclerTabLayout(Context context) {
         this(context, null);
@@ -78,13 +79,21 @@ public class RecyclerTabLayout extends RecyclerView {
     public RecyclerTabLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setWillNotDraw(false);
-
         mIndicatorPaint = new Paint();
-        mLinearLayoutManager = new LinearLayoutManager(getContext());
+        getAttributes(context, attrs, defStyle);
+        mLinearLayoutManager = new LinearLayoutManager(getContext()) {
+            @Override
+            public boolean canScrollHorizontally() {
+                return canScroll;
+            }
+        };
         mLinearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         setLayoutManager(mLinearLayoutManager);
         setItemAnimator(null);
+        mPositionThreshold = DEFAULT_POSITION_THRESHOLD;
+    }
 
+    private void getAttributes(Context context, AttributeSet attrs, int defStyle) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.rtl_RecyclerTabLayout,
                 defStyle, R.style.rtl_RecyclerTabLayout);
         setIndicatorColor(a.getColor(R.styleable
@@ -118,9 +127,8 @@ public class RecyclerTabLayout extends RecyclerView {
                 R.styleable.rtl_RecyclerTabLayout_rtl_tabMaxWidth, 0);
         mTabBackgroundResId = a
                 .getResourceId(R.styleable.rtl_RecyclerTabLayout_rtl_tabBackground, 0);
+        canScroll = a.getBoolean(R.styleable.rtl_RecyclerTabLayout_rtl_scrollEnable, true);
         a.recycle();
-
-        mPositionThreshold = DEFAULT_POSITION_THRESHOLD;
     }
 
     @Override
@@ -339,7 +347,7 @@ public class RecyclerTabLayout extends RecyclerView {
         protected LinearLayoutManager mLinearLayoutManager;
 
         public RecyclerOnScrollListener(RecyclerTabLayout recyclerTabLayout,
-                LinearLayoutManager linearLayoutManager) {
+                                        LinearLayoutManager linearLayoutManager) {
             mRecyclerTabLayout = recyclerTabLayout;
             mLinearLayoutManager = linearLayoutManager;
         }
@@ -510,7 +518,7 @@ public class RecyclerTabLayout extends RecyclerView {
         }
 
         public void setTabPadding(int tabPaddingStart, int tabPaddingTop, int tabPaddingEnd,
-                int tabPaddingBottom) {
+                                  int tabPaddingBottom) {
             mTabPaddingStart = tabPaddingStart;
             mTabPaddingTop = tabPaddingTop;
             mTabPaddingEnd = tabPaddingEnd;
@@ -522,7 +530,7 @@ public class RecyclerTabLayout extends RecyclerView {
         }
 
         public void setTabSelectedTextColor(boolean tabSelectedTextColorSet,
-                int tabSelectedTextColor) {
+                                            int tabSelectedTextColor) {
             mTabSelectedTextColorSet = tabSelectedTextColorSet;
             mTabSelectedTextColor = tabSelectedTextColor;
         }
