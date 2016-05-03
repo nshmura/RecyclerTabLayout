@@ -8,11 +8,11 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <View
-                android:id="@+id/color"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:background="@drawable/custom_view_01"/>
+    <View
+            android:id="@+id/color"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/custom_view_01"/>
 
     <TextView
             android:id="@+id/title"
