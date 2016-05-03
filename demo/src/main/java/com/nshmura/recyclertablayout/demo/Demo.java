@@ -11,7 +11,8 @@ public enum Demo {
     IMITATION_LOOP(R.string.title_imitation_loop),
     YEARS(R.string.title_years),
     AUTO_SELECT(R.string.title_auto_select),
-    RTL(R.string.title_auto_rtl);
+    RTL(R.string.title_auto_rtl),
+    TAB_SCROLL_DISABLED(R.string.title_tab_scroll_disabled);
 
     public int titleResId;
 

@@ -21,7 +21,18 @@ An efficient TabLayout library implemented with RecyclerView.
 ## Samples
 <a href="https://play.google.com/store/apps/details?id=com.nshmura.recyclertablayout.demo"><img src="art/googleplay.png"/></a>
 
-# Usage
+# Getting started
+In your build.gradle:
+
+```
+repositories {
+    jcenter()
+}
+
+dependencies {
+   compile 'com.nshmura:recyclertablayout:0.1.9'
+}
+```
 
 Define `RecyclerTabLayout` in xml layout with custom attributes.
 ```xml
@@ -114,21 +125,10 @@ public class CustomRecyclerViewAdapter extends RecyclerTabLayout.Adapter<CustomR
 | rtl_tabPaddingEnd        | The padding of the end edge of each tab  |
 | rtl_tabPaddingBottom     | The padding of the bottom edge of each tab |
 | rtl_tabPadding           | The padding of all four edges of each tab |
+| rtl_scrollEnabled        | Sets whether tab scrolling is enabled |
 
 [default attribute](library/src/main/res/values/styles.xml)
 
-# Download
-Download via Gradle:
-
-```
-repositories {
-    jcenter()
-}
-
-dependencies {
-   compile 'com.nshmura:recyclertablayout:0.1.8'
-}
-```
 
 # Resources
 Demo app uses the following resources.
@@ -141,7 +141,7 @@ https://github.com/google/material-design-icons
 
 # License
 ```
-Copyright (C) 2015 nshmura
+Copyright (C) 2016 nshmura
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

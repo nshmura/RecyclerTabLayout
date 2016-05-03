@@ -66,7 +66,7 @@ public class RecyclerTabLayout extends RecyclerView {
     protected float mOldPositionOffset;
     protected float mPositionThreshold;
     protected boolean mRequestScrollToTab;
-    protected boolean canScroll;
+    protected boolean mScrollEanbled;
 
     public RecyclerTabLayout(Context context) {
         this(context, null);
@@ -84,7 +84,7 @@ public class RecyclerTabLayout extends RecyclerView {
         mLinearLayoutManager = new LinearLayoutManager(getContext()) {
             @Override
             public boolean canScrollHorizontally() {
-                return canScroll;
+                return mScrollEanbled;
             }
         };
         mLinearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -127,7 +127,7 @@ public class RecyclerTabLayout extends RecyclerView {
                 R.styleable.rtl_RecyclerTabLayout_rtl_tabMaxWidth, 0);
         mTabBackgroundResId = a
                 .getResourceId(R.styleable.rtl_RecyclerTabLayout_rtl_tabBackground, 0);
-        canScroll = a.getBoolean(R.styleable.rtl_RecyclerTabLayout_rtl_scrollEnable, true);
+        mScrollEanbled = a.getBoolean(R.styleable.rtl_RecyclerTabLayout_rtl_scrollEnabled, true);
         a.recycle();
     }
 

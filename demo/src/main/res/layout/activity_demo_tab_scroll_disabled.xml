@@ -25,7 +25,8 @@
                 android:background="@color/primary"
                 android:theme="@style/RecyclerTabLayoutTheme.Basic"
                 app:rtl_tabMaxWidth="@dimen/tab_width"
-                app:rtl_tabSelectedTextColor="@android:color/white"/>
+                app:rtl_tabSelectedTextColor="@android:color/white"
+                app:rtl_scrollEnabled="false"/>
     </LinearLayout>
 
     <android.support.v4.view.ViewPager

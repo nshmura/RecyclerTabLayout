@@ -1,7 +1,10 @@
 Change Log
 ==========
 
-# Version 0.1.7
+# Version 0.1.9
+* Add rtl_scrollEanbled attribute.
+
+# Version 0.1.8
 * handle NO_POSITION when clicked #15
 * Update support library version to 23.3.0
 * Update gradle plugin version to 2.1.0

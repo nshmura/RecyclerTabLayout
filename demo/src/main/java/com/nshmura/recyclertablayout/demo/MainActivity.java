@@ -6,6 +6,7 @@ import com.nshmura.recyclertablayout.demo.customview01.DemoCustomView01Activity;
 import com.nshmura.recyclertablayout.demo.customview02.DemoCustomView02Activity;
 import com.nshmura.recyclertablayout.demo.imitationloop.DemoImitationLoopActivity;
 import com.nshmura.recyclertablayout.demo.rtl.DemoRtlActivity;
+import com.nshmura.recyclertablayout.demo.tabscrolldisabled.DemoTabScrollDisabledActivity;
 import com.nshmura.recyclertablayout.demo.years.DemoYearsActivity;
 
 import android.content.Intent;
@@ -85,6 +86,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             case RTL:
                 DemoRtlActivity.startActivity(this, demo);
+
+            case TAB_SCROLL_DISABLED:
+                DemoTabScrollDisabledActivity.startActivity(this, demo);
         }
     }
 

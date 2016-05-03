@@ -8,6 +8,7 @@
     <string name="title_years">UseCase - Years</string>
     <string name="title_auto_select">Other - Auto Tab Selection</string>
     <string name="title_auto_rtl">RTL Support</string>
+    <string name="title_tab_scroll_disabled">Tab Scroll Disabled</string>
     <string name="app_github_url">https://github.com/nshmura/RecyclerTabLayout</string>
     <string name="app_github">GITHUB</string>
 </resources>
