@@ -5,7 +5,7 @@ An efficient TabLayout library implemented with RecyclerView.
 
 ## Features
 - Efficient when having many tabs
-- Easy setup with ViewPager (same as TabLayout of Android Design Support Library)
+- Easy setup with ViewPager (same as [TabLayout](http://developer.android.com/intl/ja/reference/android/support/design/widget/TabLayout.html) of Android Design Support Library)
 - RTL layout support
 
 ## Demos
@@ -21,7 +21,7 @@ An efficient TabLayout library implemented with RecyclerView.
 ## Samples
 <a href="https://play.google.com/store/apps/details?id=com.nshmura.recyclertablayout.demo"><img src="art/googleplay.png"/></a>
 
-# Getting started
+## Getting started
 In your build.gradle:
 
 ```
@@ -110,7 +110,7 @@ public class CustomRecyclerViewAdapter extends RecyclerTabLayout.Adapter<CustomR
 ```
 
 
-# Attributes
+## Attributes
 | attr  | description |
 | ------------- | ------------- |
 | rtl_tabIndicatorColor    | Indicator color |
@@ -131,8 +131,8 @@ public class CustomRecyclerViewAdapter extends RecyclerTabLayout.Adapter<CustomR
 [default attribute](library/src/main/res/values/styles.xml)
 
 
-# Resources
-Demo app uses the following resources.
+## Thanks
+The demo app uses the following resources.
 
 color-names by codebrainz<br/>
 https://github.com/codebrainz/color-names
@@ -140,7 +140,7 @@ https://github.com/codebrainz/color-names
 Material Design icons by Google<br/>
 https://github.com/google/material-design-icons
 
-# License
+## License
 ```
 Copyright (C) 2016 nshmura
 
