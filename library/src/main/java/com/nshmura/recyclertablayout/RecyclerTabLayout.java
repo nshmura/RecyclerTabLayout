@@ -277,7 +277,7 @@ public class RecyclerTabLayout extends RecyclerView {
             mIndicatorPosition = position;
 
         } else {
-            if (getMeasuredWidth() > 0 && mTabMinWidth == mTabMaxWidth) { //fixed size
+            if (getMeasuredWidth() > 0 && mTabMaxWidth > 0 && mTabMinWidth == mTabMaxWidth) { //fixed size
                 int width = mTabMinWidth;
                 int offset = (int) (positionOffset * -width);
                 int leftOffset = (int) ((getMeasuredWidth() - width) / 2.f);
@@ -490,7 +490,9 @@ public class RecyclerTabLayout extends RecyclerView {
             tabTextView.setGravity(Gravity.CENTER);
             tabTextView.setMaxLines(MAX_TAB_TEXT_LINES);
             tabTextView.setEllipsize(TextUtils.TruncateAt.END);
-            tabTextView.setMaxWidth(mTabMaxWidth);
+            if (mTabMaxWidth > 0) {
+                tabTextView.setMaxWidth(mTabMaxWidth);
+            }
             tabTextView.setMinWidth(mTabMinWidth);
             tabTextView.setTextAppearance(tabTextView.getContext(), mTabTextAppearance);
             if (mTabSelectedTextColorSet) {
