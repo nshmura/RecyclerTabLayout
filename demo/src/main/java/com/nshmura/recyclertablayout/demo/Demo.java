@@ -12,7 +12,8 @@ public enum Demo {
     YEARS(R.string.title_years),
     AUTO_SELECT(R.string.title_auto_select),
     RTL(R.string.title_auto_rtl),
-    TAB_SCROLL_DISABLED(R.string.title_tab_scroll_disabled);
+    TAB_SCROLL_DISABLED(R.string.title_tab_scroll_disabled),
+    TAB_ON_SCREEN_LIMIT(R.string.title_tab_on_screen_limit);
 
     public int titleResId;
 

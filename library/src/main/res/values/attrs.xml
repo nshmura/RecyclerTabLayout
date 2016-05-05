@@ -9,6 +9,7 @@
         <attr name="rtl_tabTextAppearance" format="reference"/>
         <attr name="rtl_tabSelectedTextColor" format="color"/>
 
+        <attr name="rtl_tabOnScreenLimit" format="integer"/>
         <attr name="rtl_tabMinWidth" format="dimension"/>
         <attr name="rtl_tabMaxWidth" format="dimension"/>
 

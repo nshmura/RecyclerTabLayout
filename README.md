@@ -30,7 +30,7 @@ repositories {
 }
 
 dependencies {
-   compile 'com.nshmura:recyclertablayout:0.1.9'
+   compile 'com.nshmura:recyclertablayout:1.0.0'
 }
 ```
 
@@ -118,6 +118,7 @@ public class CustomRecyclerViewAdapter extends RecyclerTabLayout.Adapter<CustomR
 | rtl_tabBackground        | Background drawable of each tab |
 | rtl_tabTextAppearance    | TextAppearence of each tab |
 | rtl_tabSelectedTextColor | Text color of selected tab |
+| rtl_tabOnScreenLimit     | The number of OnScreen tabs. If this value is larger than 0, `rtl_tabMinWidth` and `rtl_tabMaxWidth` are ignored. |
 | rtl_tabMinWidth          | Minimum width of each tab |
 | rtl_tabMaxWidth          | Maximum width of each tab |
 | rtl_tabPaddingStart      | The padding of the start edge of each tab |

@@ -43,5 +43,8 @@
         <activity
                 android:name=".tabscrolldisabled.DemoTabScrollDisabledActivity"
                 android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".tabonscreenlimit.DemoTabOnScreenLimitActivity"
+                android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 </manifest>

@@ -44,6 +44,7 @@ public class RecyclerTabLayout extends RecyclerView {
 
     protected Paint mIndicatorPaint;
     protected int mTabBackgroundResId;
+    protected int mTabOnScreenLimit;
     protected int mTabMinWidth;
     protected int mTabMaxWidth;
     protected int mTabTextAppearance;
@@ -121,10 +122,15 @@ public class RecyclerTabLayout extends RecyclerView {
             mTabSelectedTextColorSet = true;
         }
 
-        mTabMinWidth = a.getDimensionPixelSize(
-                R.styleable.rtl_RecyclerTabLayout_rtl_tabMinWidth, 0);
-        mTabMaxWidth = a.getDimensionPixelSize(
-                R.styleable.rtl_RecyclerTabLayout_rtl_tabMaxWidth, 0);
+        mTabOnScreenLimit = a.getInteger(
+                R.styleable.rtl_RecyclerTabLayout_rtl_tabOnScreenLimit, 0);
+        if (mTabOnScreenLimit == 0) {
+            mTabMinWidth = a.getDimensionPixelSize(
+                    R.styleable.rtl_RecyclerTabLayout_rtl_tabMinWidth, 0);
+            mTabMaxWidth = a.getDimensionPixelSize(
+                    R.styleable.rtl_RecyclerTabLayout_rtl_tabMaxWidth, 0);
+        }
+
         mTabBackgroundResId = a
                 .getResourceId(R.styleable.rtl_RecyclerTabLayout_rtl_tabBackground, 0);
         mScrollEanbled = a.getBoolean(R.styleable.rtl_RecyclerTabLayout_rtl_scrollEnabled, true);
@@ -172,6 +178,7 @@ public class RecyclerTabLayout extends RecyclerView {
         adapter.setTabMaxWidth(mTabMaxWidth);
         adapter.setTabMinWidth(mTabMinWidth);
         adapter.setTabBackgroundResId(mTabBackgroundResId);
+        adapter.setTabOnScreenLimit(mTabOnScreenLimit);
         setUpWithAdapter(adapter);
     }
 
@@ -469,6 +476,7 @@ public class RecyclerTabLayout extends RecyclerView {
         private int mTabMaxWidth;
         private int mTabMinWidth;
         private int mTabBackgroundResId;
+        private int mTabOnScreenLimit;
 
         public DefaultAdapter(ViewPager viewPager) {
             super(viewPager);
@@ -490,10 +498,19 @@ public class RecyclerTabLayout extends RecyclerView {
             tabTextView.setGravity(Gravity.CENTER);
             tabTextView.setMaxLines(MAX_TAB_TEXT_LINES);
             tabTextView.setEllipsize(TextUtils.TruncateAt.END);
-            if (mTabMaxWidth > 0) {
-                tabTextView.setMaxWidth(mTabMaxWidth);
+
+            if (mTabOnScreenLimit > 0) {
+                int width = parent.getMeasuredWidth() / mTabOnScreenLimit;
+                tabTextView.setMaxWidth(width);
+                tabTextView.setMinWidth(width);
+
+            } else {
+                if (mTabMaxWidth > 0) {
+                    tabTextView.setMaxWidth(mTabMaxWidth);
+                }
+                tabTextView.setMinWidth(mTabMinWidth);
             }
-            tabTextView.setMinWidth(mTabMinWidth);
+
             tabTextView.setTextAppearance(tabTextView.getContext(), mTabTextAppearance);
             if (mTabSelectedTextColorSet) {
                 tabTextView.setTextColor(tabTextView.createColorStateList(
@@ -547,6 +564,10 @@ public class RecyclerTabLayout extends RecyclerView {
 
         public void setTabBackgroundResId(int tabBackgroundResId) {
             mTabBackgroundResId = tabBackgroundResId;
+        }
+
+        public void setTabOnScreenLimit(int tabOnScreenLimit) {
+            mTabOnScreenLimit = tabOnScreenLimit;
         }
 
         protected RecyclerView.LayoutParams createLayoutParamsForTabs() {
