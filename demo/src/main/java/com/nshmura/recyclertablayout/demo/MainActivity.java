@@ -83,12 +83,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             case IMITATION_LOOP:
                 DemoImitationLoopActivity.startActivity(this, demo);
+                break;
 
             case RTL:
                 DemoRtlActivity.startActivity(this, demo);
+                break;
 
             case TAB_SCROLL_DISABLED:
                 DemoTabScrollDisabledActivity.startActivity(this, demo);
+                break;
         }
     }
 
