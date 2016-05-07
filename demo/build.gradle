@@ -36,4 +36,5 @@ dependencies {
     compile project(':library')
     //compile "com.nshmura:recyclertablayout:$VERSION_NAME"
     compile "com.android.support:appcompat-v7:$SUPPORT_LIB_VERSION"
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

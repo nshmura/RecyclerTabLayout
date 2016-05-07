@@ -4,6 +4,7 @@ import com.nshmura.recyclertablayout.demo.autoselect.DemoAutoSelectActivity;
 import com.nshmura.recyclertablayout.demo.basic.DemoBasicActivity;
 import com.nshmura.recyclertablayout.demo.customview01.DemoCustomView01Activity;
 import com.nshmura.recyclertablayout.demo.customview02.DemoCustomView02Activity;
+import com.nshmura.recyclertablayout.demo.customview03.DemoCustomView03Activity;
 import com.nshmura.recyclertablayout.demo.imitationloop.DemoImitationLoopActivity;
 import com.nshmura.recyclertablayout.demo.rtl.DemoRtlActivity;
 import com.nshmura.recyclertablayout.demo.tabonscreenlimit.DemoTabOnScreenLimitActivity;
@@ -76,6 +77,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             case CUSTOM_VIEW02:
                 DemoCustomView02Activity.startActivity(this, demo);
+                break;
+
+            case CUSTOM_VIEW03:
+                DemoCustomView03Activity.startActivity(this, demo);
                 break;
 
             case YEARS:

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.nshmura.recyclertablayout.demo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -30,6 +32,9 @@
                 android:theme="@style/AppTheme.NoActionBar"/>
         <activity
                 android:name=".customview02.DemoCustomView02Activity"
+                android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+                android:name=".customview03.DemoCustomView03Activity"
                 android:theme="@style/AppTheme.NoActionBar"/>
         <activity
                 android:name=".years.DemoYearsActivity"

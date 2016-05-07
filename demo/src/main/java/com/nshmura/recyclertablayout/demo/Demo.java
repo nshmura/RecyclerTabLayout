@@ -8,6 +8,7 @@ public enum Demo {
     BASIC(R.string.title_basic),
     CUSTOM_VIEW01(R.string.title_custom_view01),
     CUSTOM_VIEW02(R.string.title_custom_view02),
+    CUSTOM_VIEW03(R.string.title_custom_view03),
     IMITATION_LOOP(R.string.title_imitation_loop),
     YEARS(R.string.title_years),
     AUTO_SELECT(R.string.title_auto_select),
