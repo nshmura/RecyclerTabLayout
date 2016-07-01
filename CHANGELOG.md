@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+## Version 1.0.1
+* Update support library version to 24.0.0
+* Update gradle plugin version to 2.1.2
+
 ## Version 1.0.0
 * Add rtl_tabOnScreenLimit attribute.
 
