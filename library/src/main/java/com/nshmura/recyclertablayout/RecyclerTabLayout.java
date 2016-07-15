@@ -293,6 +293,7 @@ public class RecyclerTabLayout extends RecyclerView {
             mRequestScrollToTab = true;
         }
 
+        stopScroll();
         mLinearLayoutManager.scrollToPositionWithOffset(position, scrollOffset);
 
         if (mIndicatorHeight > 0) {
