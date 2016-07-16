@@ -1,6 +1,9 @@
 Change Log
 ==========
 
+## Version 1.0.2
+* Stop scrolling before scrolling to tab #19
+
 ## Version 1.0.1
 * Update support library version to 24.0.0
 * Update gradle plugin version to 2.1.2
