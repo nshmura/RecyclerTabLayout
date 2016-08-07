@@ -8,6 +8,11 @@ An efficient TabLayout library implemented with RecyclerView.
 - Easy setup with ViewPager (same as [TabLayout](http://developer.android.com/intl/ja/reference/android/support/design/widget/TabLayout.html) of Android Design Support Library)
 - RTL layout support
 
+## UseCase
+- Many tabs layout
+- Infinite loop scrolling (imitated)
+
+
 ## Demos
 ![Years](art/years.gif)
 
