@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.nshmura.recyclertablayout.demo"
-        minSdkVersion 7
+        minSdkVersion MIN_SDK_VERSION as int
         targetSdkVersion COMPILE_SDK_VERSION as int
         versionCode VERSION_CODE as int
         versionName VERSION_NAME

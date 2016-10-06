@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+## Version 1.1.0
+* Change minSdkVersion from 7 to 9
+* Update support library version to 24.2.1
+
 ## Version 1.0.2
 * Stop scrolling before scrolling to tab #19
 

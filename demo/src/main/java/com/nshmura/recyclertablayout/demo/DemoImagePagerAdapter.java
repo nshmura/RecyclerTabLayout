@@ -1,5 +1,6 @@
 package com.nshmura.recyclertablayout.demo;
 
+import android.support.annotation.DrawableRes;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +44,7 @@ public class DemoImagePagerAdapter extends PagerAdapter {
         return view == object;
     }
 
+    @DrawableRes
     public int getImageResourceId(int position) {
         return mItems.get(position);
     }
