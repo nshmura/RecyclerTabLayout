@@ -24,7 +24,6 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$SUPPORT_LIB_VERSION"
 }
 
-
 publish {
     userOrg = POM_DEVELOPER_ID
     groupId = GROUP
