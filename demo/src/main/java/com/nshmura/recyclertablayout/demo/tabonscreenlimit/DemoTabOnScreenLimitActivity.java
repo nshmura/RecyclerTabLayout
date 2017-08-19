@@ -38,7 +38,7 @@ public class DemoTabOnScreenLimitActivity extends AppCompatActivity {
 
         Demo demo = Demo.valueOf(getIntent().getStringExtra(KEY_DEMO));
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(demo.titleResId);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -54,11 +54,10 @@ public class DemoTabOnScreenLimitActivity extends AppCompatActivity {
         DemoColorPagerAdapter adapter = new DemoColorPagerAdapter();
         adapter.addAll(items);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(adapter);
 
-        mRecyclerTabLayout = (RecyclerTabLayout)
-                findViewById(R.id.recycler_tab_layout);
+        mRecyclerTabLayout = findViewById(R.id.recycler_tab_layout);
         mRecyclerTabLayout.setUpWithViewPager(viewPager);
     }
 

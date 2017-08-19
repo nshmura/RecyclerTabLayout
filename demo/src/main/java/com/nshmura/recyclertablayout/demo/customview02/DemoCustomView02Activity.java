@@ -31,7 +31,7 @@ public class DemoCustomView02Activity extends AppCompatActivity {
 
         Demo demo = Demo.valueOf(getIntent().getStringExtra(KEY_DEMO));
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(demo.titleResId);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -39,11 +39,10 @@ public class DemoCustomView02Activity extends AppCompatActivity {
         DemoImagePagerAdapter adapter = new DemoImagePagerAdapter();
         adapter.addAll(DemoData.loadImageResourceList());
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(adapter);
 
-        RecyclerTabLayout recyclerTabLayout = (RecyclerTabLayout)
-                findViewById(R.id.recycler_tab_layout);
+        RecyclerTabLayout recyclerTabLayout = findViewById(R.id.recycler_tab_layout);
         recyclerTabLayout.setUpWithAdapter(new DemoCustomView02Adapter(viewPager));
         recyclerTabLayout.setPositionThreshold(0.5f);
     }

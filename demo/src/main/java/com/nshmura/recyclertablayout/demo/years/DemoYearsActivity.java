@@ -33,7 +33,7 @@ public class DemoYearsActivity extends AppCompatActivity {
 
         Demo demo = Demo.valueOf(getIntent().getStringExtra(KEY_DEMO));
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(demo.titleResId);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -50,12 +50,11 @@ public class DemoYearsActivity extends AppCompatActivity {
         DemoYearsPagerAdapter adapter = new DemoYearsPagerAdapter();
         adapter.addAll(items);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(initialYear - startYear);
 
-        RecyclerTabLayout recyclerTabLayout = (RecyclerTabLayout)
-                findViewById(R.id.recycler_tab_layout);
+        RecyclerTabLayout recyclerTabLayout = findViewById(R.id.recycler_tab_layout);
         recyclerTabLayout.setUpWithViewPager(viewPager);
     }
 

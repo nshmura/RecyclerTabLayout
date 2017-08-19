@@ -59,7 +59,7 @@ public class DemoCustomView01Adapter extends RecyclerTabLayout.Adapter<DemoCusto
 
         public ViewHolder(View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.title);
+            title = itemView.findViewById(R.id.title);
             color = itemView.findViewById(R.id.color);
 
             itemView.setOnClickListener(new View.OnClickListener() {

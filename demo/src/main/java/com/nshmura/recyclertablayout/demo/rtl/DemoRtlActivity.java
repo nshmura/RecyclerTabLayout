@@ -1,11 +1,5 @@
 package com.nshmura.recyclertablayout.demo.rtl;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
-
 import com.nshmura.recyclertablayout.RecyclerTabLayout;
 import com.nshmura.recyclertablayout.demo.ColorItem;
 import com.nshmura.recyclertablayout.demo.Demo;
@@ -13,6 +7,12 @@ import com.nshmura.recyclertablayout.demo.DemoColorPagerAdapter;
 import com.nshmura.recyclertablayout.demo.R;
 import com.nshmura.recyclertablayout.demo.basic.DemoBasicActivity;
 import com.nshmura.recyclertablayout.demo.utils.DemoData;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -35,7 +35,7 @@ public class DemoRtlActivity extends DemoBasicActivity {
 
         Demo demo = Demo.valueOf(getIntent().getStringExtra(KEY_DEMO));
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(demo.titleResId);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -51,11 +51,10 @@ public class DemoRtlActivity extends DemoBasicActivity {
         DemoColorPagerAdapter adapter = new DemoColorPagerAdapter();
         adapter.addAll(items);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+        ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(adapter);
 
-        mRecyclerTabLayout = (RecyclerTabLayout)
-                findViewById(R.id.recycler_tab_layout);
+        mRecyclerTabLayout = findViewById(R.id.recycler_tab_layout);
         mRecyclerTabLayout.setUpWithViewPager(viewPager);
     }
 }
