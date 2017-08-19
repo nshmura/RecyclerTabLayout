@@ -1,6 +1,9 @@
 Change Log
 ==========
 
+## Version 1.3.0
+* Improve indicator motion
+
 ## Version 1.2.0
 * Change minSdkVersion from 9 to 14
 * Update Android SDK version to 26

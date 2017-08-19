@@ -21,7 +21,7 @@ public class DemoColorPagerAdapter extends PagerAdapter {
         View view = LayoutInflater.from(container.getContext())
                 .inflate(R.layout.layout_page, container, false);
 
-        TextView textView = (TextView) view.findViewById(R.id.title);
+        TextView textView = view.findViewById(R.id.title);
         textView.setText("Page: " + mItems.get(position).hex);
         container.addView(view);
 

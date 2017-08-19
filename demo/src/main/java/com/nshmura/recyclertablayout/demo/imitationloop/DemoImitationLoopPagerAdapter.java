@@ -25,7 +25,7 @@ public class DemoImitationLoopPagerAdapter extends PagerAdapter {
         View view = LayoutInflater.from(container.getContext())
                 .inflate(R.layout.layout_page, container, false);
 
-        TextView textView = (TextView) view.findViewById(R.id.title);
+        TextView textView = view.findViewById(R.id.title);
         textView.setText("Page: " + getValueAt(position));
         container.addView(view);
 

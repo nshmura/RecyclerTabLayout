@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-   compile 'com.nshmura:recyclertablayout:1.2.0'
+   compile 'com.nshmura:recyclertablayout:1.3.0'
 }
 ```
 
@@ -147,7 +147,7 @@ https://github.com/google/material-design-icons
 
 ## License
 ```
-Copyright (C) 2016 nshmura
+Copyright (C) 2017 nshmura
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

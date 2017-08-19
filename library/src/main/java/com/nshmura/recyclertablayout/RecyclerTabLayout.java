@@ -61,8 +61,10 @@ public class RecyclerTabLayout extends RecyclerView {
     protected Adapter<?> mAdapter;
 
     protected int mIndicatorPosition;
-    protected int mIndicatorOffset;
-    protected int mScrollOffset;
+    protected int mIndicatorGap;
+    protected int mIndicatorScroll;
+    private int mOldPosition;
+    private int mOldScrollOffset;
     protected float mOldPositionOffset;
     protected float mPositionThreshold;
     protected boolean mRequestScrollToTab;
@@ -248,34 +250,35 @@ public class RecyclerTabLayout extends RecyclerView {
 
         if (selectedView != null) {
             int width = getMeasuredWidth();
-            float scroll1 = width / 2.f - selectedView.getMeasuredWidth() / 2.f;
+            float sLeft = (position == 0) ? 0 : width / 2.f - selectedView.getMeasuredWidth() / 2.f; // left edge of selected tab
+            float sRight = sLeft + selectedView.getMeasuredWidth(); // right edge of selected tab
 
             if (nextView != null) {
-                float scroll2 = width / 2.f - nextView.getMeasuredWidth() / 2.f;
+                float nLeft = width / 2.f - nextView.getMeasuredWidth() / 2.f; // left edge of next tab
+                float distance = sRight - nLeft; // total distance that is needed to distance to next tab
+                float dx = distance * positionOffset;
+                scrollOffset = (int) (sLeft - dx);
 
-                float scroll = scroll1 + (selectedView.getMeasuredWidth() - scroll2);
-                float dx = scroll * positionOffset;
-                scrollOffset = (int) (scroll1 - dx);
+                if (position == 0) {
+                    float indicatorGap = (nextView.getMeasuredWidth() - selectedView.getMeasuredWidth()) / 2;
+                    mIndicatorGap = (int) (indicatorGap * positionOffset);
+                    mIndicatorScroll = (int)((selectedView.getMeasuredWidth() + indicatorGap)  * positionOffset);
 
-                mScrollOffset = (int) dx;
-                mIndicatorOffset = (int) ((scroll1 - scroll2) * positionOffset);
+                } else {
+                    float indicatorGap = (nextView.getMeasuredWidth() - selectedView.getMeasuredWidth()) / 2;
+                    mIndicatorGap = (int) (indicatorGap * positionOffset);
+                    mIndicatorScroll = (int) dx;
+                }
 
             } else {
-                scrollOffset = (int) scroll1;
-                mScrollOffset = 0;
-                mIndicatorOffset = 0;
+                scrollOffset = (int) sLeft;
+                mIndicatorScroll = 0;
+                mIndicatorGap = 0;
             }
             if (fitIndicator) {
-                mScrollOffset = 0;
-                mIndicatorOffset = 0;
+                mIndicatorScroll = 0;
+                mIndicatorGap = 0;
             }
-
-            if (mAdapter != null && mIndicatorPosition == position) {
-                updateCurrentIndicatorPosition(position, positionOffset - mOldPositionOffset,
-                        positionOffset);
-            }
-
-            mIndicatorPosition = position;
 
         } else {
             if (getMeasuredWidth() > 0 && mTabMaxWidth > 0 && mTabMinWidth == mTabMaxWidth) { //fixed size
@@ -287,13 +290,23 @@ public class RecyclerTabLayout extends RecyclerView {
             mRequestScrollToTab = true;
         }
 
-        stopScroll();
-        mLinearLayoutManager.scrollToPositionWithOffset(position, scrollOffset);
+        if (mAdapter != null && mIndicatorPosition != position) {
+            updateCurrentIndicatorPosition(position, positionOffset - mOldPositionOffset,
+                    positionOffset);
+        }
+        mIndicatorPosition = position;
 
+        stopScroll();
+
+        if (position != mOldPosition || scrollOffset != mOldScrollOffset) {
+            mLinearLayoutManager.scrollToPositionWithOffset(position, scrollOffset);
+        }
         if (mIndicatorHeight > 0) {
             invalidate();
         }
 
+        mOldPosition = position;
+        mOldScrollOffset = scrollOffset;
         mOldPositionOffset = positionOffset;
     }
 
@@ -326,11 +339,11 @@ public class RecyclerTabLayout extends RecyclerView {
         int left;
         int right;
         if (isLayoutRtl()) {
-            left = view.getLeft() - mScrollOffset - mIndicatorOffset;
-            right = view.getRight() - mScrollOffset + mIndicatorOffset;
+            left = view.getLeft() - mIndicatorScroll - mIndicatorGap;
+            right = view.getRight() - mIndicatorScroll + mIndicatorGap;
         } else {
-            left = view.getLeft() + mScrollOffset - mIndicatorOffset;
-            right = view.getRight() + mScrollOffset + mIndicatorOffset;
+            left = view.getLeft() + mIndicatorScroll - mIndicatorGap;
+            right = view.getRight() + mIndicatorScroll + mIndicatorGap;
         }
 
         int top = getHeight() - mIndicatorHeight;

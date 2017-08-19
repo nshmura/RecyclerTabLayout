@@ -17,8 +17,8 @@
                 android:layout_height="wrap_content"
                 android:minHeight="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         <com.nshmura.recyclertablayout.RecyclerTabLayout
                 android:id="@+id/recycler_tab_layout"
