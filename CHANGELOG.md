@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+## Version 1.2.0
+* Change minSdkVersion from 9 to 14
+* Update Android SDK version to 26
+* Update support library version to 26.0.1
+
 ## Version 1.1.0
 * Change minSdkVersion from 7 to 9
 * Update support library version to 24.2.1
