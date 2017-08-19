@@ -17,16 +17,15 @@
 package com.nshmura.recyclertablayout;
 
 import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.AppCompatDrawableManager;
+import android.support.v7.content.res.AppCompatResources;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -201,18 +200,13 @@ public class RecyclerTabLayout extends RecyclerView {
         }
 
         if (smoothScroll && position != mIndicatorPosition) {
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
-                startAnimation(position);
-            } else {
-                scrollToTab(position); //FIXME add animation
-            }
+            startAnimation(position);
 
         } else {
             scrollToTab(position);
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     protected void startAnimation(final int position) {
 
         float distance = 1;
@@ -519,7 +513,7 @@ public class RecyclerTabLayout extends RecyclerView {
             }
             if (mTabBackgroundResId != 0) {
                 tabTextView.setBackgroundDrawable(
-                        AppCompatDrawableManager.get().getDrawable(tabTextView.getContext(), mTabBackgroundResId));
+                        AppCompatResources.getDrawable(tabTextView.getContext(), mTabBackgroundResId));
             }
             tabTextView.setLayoutParams(createLayoutParamsForTabs());
             return new ViewHolder(tabTextView);
@@ -597,7 +591,7 @@ public class RecyclerTabLayout extends RecyclerView {
     }
 
 
-    public static class TabTextView extends TextView {
+    public static class TabTextView extends AppCompatTextView {
 
         public TabTextView(Context context) {
             super(context);
