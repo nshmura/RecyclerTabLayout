@@ -1,6 +1,9 @@
 Change Log
 ==========
 
+## Version 1.4.0
+* Fix for issue #31
+
 ## Version 1.3.0
 * Improve indicator motion
 
