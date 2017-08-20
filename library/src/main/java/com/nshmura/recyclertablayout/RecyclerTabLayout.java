@@ -290,10 +290,7 @@ public class RecyclerTabLayout extends RecyclerView {
             mRequestScrollToTab = true;
         }
 
-        if (mAdapter != null && mIndicatorPosition != position) {
-            updateCurrentIndicatorPosition(position, positionOffset - mOldPositionOffset,
-                    positionOffset);
-        }
+        updateCurrentIndicatorPosition(position, positionOffset - mOldPositionOffset, positionOffset);
         mIndicatorPosition = position;
 
         stopScroll();
@@ -311,6 +308,9 @@ public class RecyclerTabLayout extends RecyclerView {
     }
 
     protected void updateCurrentIndicatorPosition(int position, float dx, float positionOffset) {
+        if (mAdapter == null) {
+            return;
+        }
         int indicatorPosition = -1;
         if (dx > 0 && positionOffset >= mPositionThreshold - POSITION_THRESHOLD_ALLOWABLE) {
             indicatorPosition = position + 1;
