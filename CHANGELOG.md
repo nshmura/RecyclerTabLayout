@@ -1,6 +1,9 @@
 Change Log
 ==========
 
+## Version 1.5.0
+* Fix version
+
 ## Version 1.4.0
 * Fix for issue #31
 
