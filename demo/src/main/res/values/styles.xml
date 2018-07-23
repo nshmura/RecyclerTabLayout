@@ -8,8 +8,7 @@
         <item name="android:textColorSecondary">@color/secondary_text</item>
     </style>
 
-    <style name="AppTheme.Main" parent="AppTheme">
-    </style>
+    <style name="AppTheme.Main" parent="AppTheme"></style>
 
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
@@ -22,5 +21,10 @@
 
     <style name="RecyclerTabLayoutTheme.Basic"></style>
 
+    <style name="AppBarText">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>
