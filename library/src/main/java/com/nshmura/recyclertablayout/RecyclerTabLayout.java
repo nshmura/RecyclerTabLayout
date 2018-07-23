@@ -47,6 +47,7 @@ public class RecyclerTabLayout extends RecyclerView {
     protected int mTabMinWidth;
     protected int mTabMaxWidth;
     protected int mTabTextAppearance;
+    protected int mTabSelectedTextAppearance;
     protected int mTabSelectedTextColor;
     protected boolean mTabSelectedTextColorSet;
     protected int mTabPaddingStart;
@@ -63,12 +64,12 @@ public class RecyclerTabLayout extends RecyclerView {
     protected int mIndicatorPosition;
     protected int mIndicatorGap;
     protected int mIndicatorScroll;
-    private int mOldPosition;
-    private int mOldScrollOffset;
     protected float mOldPositionOffset;
     protected float mPositionThreshold;
     protected boolean mRequestScrollToTab;
     protected boolean mScrollEanbled;
+    private int mOldPosition;
+    private int mOldScrollOffset;
 
     public RecyclerTabLayout(Context context) {
         this(context, null);
@@ -104,6 +105,9 @@ public class RecyclerTabLayout extends RecyclerView {
                 .rtl_RecyclerTabLayout_rtl_tabIndicatorHeight, 0));
 
         mTabTextAppearance = a.getResourceId(R.styleable.rtl_RecyclerTabLayout_rtl_tabTextAppearance,
+                R.style.rtl_RecyclerTabLayout_Tab);
+
+        mTabSelectedTextAppearance = a.getResourceId(R.styleable.rtl_RecyclerTabLayout_rtl_tabSelectedTextAppearance,
                 R.style.rtl_RecyclerTabLayout_Tab);
 
         mTabPaddingStart = mTabPaddingTop = mTabPaddingEnd = mTabPaddingBottom = a
@@ -175,6 +179,7 @@ public class RecyclerTabLayout extends RecyclerView {
         DefaultAdapter adapter = new DefaultAdapter(viewPager);
         adapter.setTabPadding(mTabPaddingStart, mTabPaddingTop, mTabPaddingEnd, mTabPaddingBottom);
         adapter.setTabTextAppearance(mTabTextAppearance);
+        adapter.setTabSelectedTextAppearance(mTabSelectedTextAppearance);
         adapter.setTabSelectedTextColor(mTabSelectedTextColorSet, mTabSelectedTextColor);
         adapter.setTabMaxWidth(mTabMaxWidth);
         adapter.setTabMinWidth(mTabMinWidth);
@@ -262,7 +267,7 @@ public class RecyclerTabLayout extends RecyclerView {
                 if (position == 0) {
                     float indicatorGap = (nextView.getMeasuredWidth() - selectedView.getMeasuredWidth()) / 2;
                     mIndicatorGap = (int) (indicatorGap * positionOffset);
-                    mIndicatorScroll = (int)((selectedView.getMeasuredWidth() + indicatorGap)  * positionOffset);
+                    mIndicatorScroll = (int) ((selectedView.getMeasuredWidth() + indicatorGap) * positionOffset);
 
                 } else {
                     float indicatorGap = (nextView.getMeasuredWidth() - selectedView.getMeasuredWidth()) / 2;
@@ -358,6 +363,7 @@ public class RecyclerTabLayout extends RecyclerView {
 
     protected static class RecyclerOnScrollListener extends OnScrollListener {
 
+        public int mDx;
         protected RecyclerTabLayout mRecyclerTabLayout;
         protected LinearLayoutManager mLinearLayoutManager;
 
@@ -366,8 +372,6 @@ public class RecyclerTabLayout extends RecyclerView {
             mRecyclerTabLayout = recyclerTabLayout;
             mLinearLayoutManager = linearLayoutManager;
         }
-
-        public int mDx;
 
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -460,12 +464,12 @@ public class RecyclerTabLayout extends RecyclerView {
             return mViewPager;
         }
 
-        public void setCurrentIndicatorPosition(int indicatorPosition) {
-            mIndicatorPosition = indicatorPosition;
-        }
-
         public int getCurrentIndicatorPosition() {
             return mIndicatorPosition;
+        }
+
+        public void setCurrentIndicatorPosition(int indicatorPosition) {
+            mIndicatorPosition = indicatorPosition;
         }
     }
 
@@ -479,6 +483,7 @@ public class RecyclerTabLayout extends RecyclerView {
         protected int mTabPaddingEnd;
         protected int mTabPaddingBottom;
         protected int mTabTextAppearance;
+        protected int mTabSelectedTextAppearance;
         protected boolean mTabSelectedTextColorSet;
         protected int mTabSelectedTextColor;
         private int mTabMaxWidth;
@@ -523,6 +528,7 @@ public class RecyclerTabLayout extends RecyclerView {
             if (mTabSelectedTextColorSet) {
                 tabTextView.setTextColor(tabTextView.createColorStateList(
                         tabTextView.getCurrentTextColor(), mTabSelectedTextColor));
+
             }
             if (mTabBackgroundResId != 0) {
                 tabTextView.setBackgroundDrawable(
@@ -537,6 +543,9 @@ public class RecyclerTabLayout extends RecyclerView {
             CharSequence title = getViewPager().getAdapter().getPageTitle(position);
             holder.title.setText(title);
             holder.title.setSelected(getCurrentIndicatorPosition() == position);
+            holder.title.setTextAppearance(holder.title.getContext(),
+                    getCurrentIndicatorPosition() == position ?
+                            mTabSelectedTextAppearance : mTabTextAppearance);
         }
 
         @Override
@@ -554,6 +563,10 @@ public class RecyclerTabLayout extends RecyclerView {
 
         public void setTabTextAppearance(int tabTextAppearance) {
             mTabTextAppearance = tabTextAppearance;
+        }
+
+        public void setTabSelectedTextAppearance(int tabSelectedTextAppearance) {
+            mTabSelectedTextAppearance = tabSelectedTextAppearance;
         }
 
         public void setTabSelectedTextColor(boolean tabSelectedTextColorSet,
