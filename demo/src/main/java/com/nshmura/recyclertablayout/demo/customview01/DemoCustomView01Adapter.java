@@ -6,8 +6,8 @@ import com.nshmura.recyclertablayout.demo.DemoColorPagerAdapter;
 import com.nshmura.recyclertablayout.demo.R;
 
 import android.graphics.Typeface;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;

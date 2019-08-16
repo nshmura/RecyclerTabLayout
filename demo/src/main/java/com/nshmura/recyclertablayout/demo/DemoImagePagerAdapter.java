@@ -1,7 +1,7 @@
 package com.nshmura.recyclertablayout.demo;
 
-import android.support.annotation.DrawableRes;
-import android.support.v4.view.PagerAdapter;
+import androidx.annotation.DrawableRes;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
