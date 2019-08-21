@@ -63,8 +63,6 @@ public class RecyclerTabLayout extends RecyclerView {
     protected int mIndicatorPosition;
     protected int mIndicatorGap;
     protected int mIndicatorScroll;
-    private int mOldPosition;
-    private int mOldScrollOffset;
     protected float mOldPositionOffset;
     protected float mPositionThreshold;
     protected boolean mRequestScrollToTab;
@@ -295,15 +293,12 @@ public class RecyclerTabLayout extends RecyclerView {
 
         stopScroll();
 
-        if (position != mOldPosition || scrollOffset != mOldScrollOffset) {
-            mLinearLayoutManager.scrollToPositionWithOffset(position, scrollOffset);
-        }
+        mLinearLayoutManager.scrollToPositionWithOffset(position, scrollOffset);
+
         if (mIndicatorHeight > 0) {
             invalidate();
         }
 
-        mOldPosition = position;
-        mOldScrollOffset = scrollOffset;
         mOldPositionOffset = positionOffset;
     }
 
