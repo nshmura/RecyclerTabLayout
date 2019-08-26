@@ -33,7 +33,8 @@ android {
 }
 
 dependencies {
-    compile project(':library')
-    //compile "com.nshmura:recyclertablayout:$VERSION_NAME"
-    compile "com.android.support:appcompat-v7:$SUPPORT_LIB_VERSION"
+    implementation project(':library')
+    //implementation "com.nshmura:recyclertablayout:$VERSION_NAME"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }
