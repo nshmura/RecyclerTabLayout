@@ -312,10 +312,11 @@ public class RecyclerTabLayout extends RecyclerView {
             return;
         }
         int indicatorPosition = -1;
-        if (dx > 0 && positionOffset >= mPositionThreshold - POSITION_THRESHOLD_ALLOWABLE) {
+        boolean isNewPosition = position != mOldPosition;
+        if ((dx > 0 || isNewPosition) && positionOffset >= mPositionThreshold - POSITION_THRESHOLD_ALLOWABLE) {
             indicatorPosition = position + 1;
 
-        } else if (dx < 0 && positionOffset <= 1 - mPositionThreshold + POSITION_THRESHOLD_ALLOWABLE) {
+        } else if ((dx < 0 || isNewPosition) && positionOffset <= 1 - mPositionThreshold + POSITION_THRESHOLD_ALLOWABLE) {
             indicatorPosition = position;
         }
         if (indicatorPosition >= 0 && indicatorPosition != mAdapter.getCurrentIndicatorPosition()) {
